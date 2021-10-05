@@ -73,8 +73,6 @@ export default class ImagesInfo extends Component {
   render() {
     const { error, status, images } = this.state;
 
-    console.log(images);
-
     if (status === 'idle') {
       return <div>Введите запрос.</div>;
     }
