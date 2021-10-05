@@ -6,7 +6,9 @@ function fetchPictures(inputValue, pageNumber, KEY) {
       return response.json();
     }
 
-    return Promise.reject(new Error(`Не находим картинок по запросу ${inputValue}`));
+    return Promise.reject(
+      new Error(`Что-то пошло не так. Не возможно отобразить картинки по запросу ${inputValue}`)
+    );
   });
 }
 

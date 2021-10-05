@@ -47,7 +47,7 @@ export default class ImagesInfo extends Component {
       API.fetchPictures(nextValue, currentPage, KEY)
         .then((images) => {
           if (images.hits.length === 0) {
-            this.setState({ status: Status.REJECTED });
+            toast(`Закончились картинки по запросу ${nextValue}`);
           }
           this.setState({
             images: [...this.state.images, ...images.hits],
@@ -84,7 +84,7 @@ export default class ImagesInfo extends Component {
     }
 
     if (status === 'rejected') {
-      return error && toast(error.message);
+      return <div>{error.message}</div>;
     }
 
     if (status === 'resolved') {
