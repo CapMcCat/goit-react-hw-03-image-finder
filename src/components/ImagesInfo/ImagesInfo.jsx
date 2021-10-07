@@ -29,10 +29,8 @@ export default class ImagesInfo extends Component {
     const nextValue = this.props.inputValue;
     const currentPage = this.state.page;
     const prevPage = prevState.page;
-
     if (prevValue !== nextValue) {
       this.setState({ status: Status.PENDING, page: 1 });
-
       API.fetchPictures(nextValue, currentPage, KEY)
         .then((images) => {
           if (images.hits.length === 0) {
@@ -42,8 +40,7 @@ export default class ImagesInfo extends Component {
         })
         .catch((error) => this.setState({ error, status: Status.REJECTED }));
     }
-
-    if (prevPage !== currentPage) {
+    if (prevPage !== currentPage && currentPage > prevPage) {
       API.fetchPictures(nextValue, currentPage, KEY)
         .then((images) => {
           if (images.hits.length === 0) {
